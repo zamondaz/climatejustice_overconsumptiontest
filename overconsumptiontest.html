@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>과잉소비 유형 테스트</title>
+    <title>소비 성향 테스트</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -54,61 +54,7 @@
             <li><label><input type="radio" name="q1" value="0"> 그렇다</label></li>
             <li><label><input type="radio" name="q1" value="1"> 아니다</label></li>
         </ul>
-        <div class="question">Q2. 나는 유행한다는 이유로 불필요한 옷을 산 적이 있다.</div>
-        <ul class="options">
-            <li><label><input type="radio" name="q2" value="0"> 그렇다</label></li>
-            <li><label><input type="radio" name="q2" value="1"> 아니다</label></li>
-        </ul>
-        <div class="question">Q3. 나는 옷장에 비슷한 옷을 가지고 있는지 모르고 새로운 옷을 구매한 적 있다.</div>
-        <ul class="options">
-            <li><label><input type="radio" name="q3" value="0"> 그렇다</label></li>
-            <li><label><input type="radio" name="q3" value="1"> 아니다</label></li>
-        </ul>
-        <div class="question">Q4. 나는 실사용 목적이 아닌 화장품을 구매한 적이 있다. (ex. 케이스가 이뻐서, 광고 모델이 좋아서, 소장용으로)</div>
-        <ul class="options">
-            <li><label><input type="radio" name="q4" value="0"> 그렇다</label></li>
-            <li><label><input type="radio" name="q4" value="1"> 아니다</label></li>
-        </ul>
-        <div class="question">Q5. 나는 향을 교체하고자 하는 이유로 샴푸, 바디워시 등을 있는데도 자주 새로 구매한다.</div>
-        <ul class="options">
-            <li><label><input type="radio" name="q5" value="0"> 그렇다</label></li>
-            <li><label><input type="radio" name="q5" value="1"> 아니다</label></li>
-        </ul>
-        <div class="question">Q6. 나는 환경을 아낀다는 생각으로 텀블러를 3개 이상 구매해 가지고 있다.</div>
-        <ul class="options">
-            <li><label><input type="radio" name="q6" value="0"> 그렇다</label></li>
-            <li><label><input type="radio" name="q6" value="1"> 아니다</label></li>
-        </ul>
-        <div class="question">Q7. 나는 환경을 아낀다는 생각으로 에코백이 있는데도 구매한 적이 있다.</div>
-        <ul class="options">
-            <li><label><input type="radio" name="q7" value="0"> 그렇다</label></li>
-            <li><label><input type="radio" name="q7" value="1"> 아니다</label></li>
-        </ul>
-        <div class="question">Q8. 나는 환경운동에 동참하고 싶어서 당장 필요하지 않은 특정 브랜드의 상품을 많이 구매해준 적이 있다.</div>
-        <ul class="options">
-            <li><label><input type="radio" name="q8" value="0"> 그렇다</label></li>
-            <li><label><input type="radio" name="q8" value="1"> 아니다</label></li>
-        </ul>
-        <div class="question">Q9. 나는 생분해 플라스틱 사용된 일회용 제품은 괜찮다고 생각해 자주 사용한다.</div>
-        <ul class="options">
-            <li><label><input type="radio" name="q9" value="0"> 그렇다</label></li>
-            <li><label><input type="radio" name="q9" value="1"> 아니다</label></li>
-        </ul>
-        <div class="question">Q10. 나는 휴대폰 및 전자기기를 3년에 한 번 이상 바꾼다.</div>
-        <ul class="options">
-            <li><label><input type="radio" name="q10" value="0"> 그렇다</label></li>
-            <li><label><input type="radio" name="q10" value="1"> 아니다</label></li>
-        </ul>
-        <div class="question">Q11. 나는 주 1회 이상 못 먹은 식재료를 폐기한다.</div>
-        <ul class="options">
-            <li><label><input type="radio" name="q11" value="0"> 그렇다</label></li>
-            <li><label><input type="radio" name="q11" value="1"> 아니다</label></li>
-        </ul>
-        <div class="question">Q12. 나는 할인 또는 1+1 행사 등의 이유로 물건을 필요 이상으로 구매한 적이 있다.</div>
-        <ul class="options">
-            <li><label><input type="radio" name="q12" value="0"> 그렇다</label></li>
-            <li><label><input type="radio" name="q12" value="1"> 아니다</label></li>
-        </ul>
+        <!-- 다른 질문 추가 -->
         <button class="submit-btn" onclick="submitQuiz()">제출하기</button>
         <div class="result" id="result"></div>
     </div>
@@ -116,7 +62,7 @@
     <script>
         function submitQuiz() {
             let score = 0;
-            const questions = 12; // 질문의 수
+            const questions = 1; // 질문의 수
 
             for (let i = 1; i <= questions; i++) {
                 const answer = document.querySelector(`input[name="q${i}"]:checked`);
