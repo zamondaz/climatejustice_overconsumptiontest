@@ -158,7 +158,7 @@
                 <button type="button" class="submit-btn hidden" onclick="submitQuiz()">제출하기</button>
             </div>
         </form>
-        <div class="result" id="result"></div>
+        <div class="result hidden" id="result"></div>
     </div>
 
     <script>
@@ -196,7 +196,7 @@
                 }
             }
 
- let resultText = '';
+            let resultText = '';
             let imageUrl = '';
 
             if (score >= 9) {
@@ -213,9 +213,10 @@
                 imageUrl = 'images/shopping_king.jpg';
             }
 
-            const resultDiv = document.getElementById('result');
-            resultDiv.innerHTML = `<span>점수: ${score}/12</span><br>당신은 ${resultText}입니다.<br><img src="${imageUrl}" alt="${resultText}">`;
+            const quizContainer = document.querySelector('.quiz-container');
+            quizContainer.innerHTML = `<div class="result" id="result"><span>점수: ${score}/12</span><br>당신은 ${resultText}입니다.<br><img src="${imageUrl}" alt="${resultText}" width="300"></div>`;
         }
     </script>
 </body>
 </html>
+
