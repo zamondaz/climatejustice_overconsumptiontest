@@ -137,6 +137,9 @@
                 const answer = document.querySelector(`input[name="q${i}"]:checked`);
                 if (answer) {
                     score += parseInt(answer.value);
+                } else {
+                    alert(`질문 ${i}에 응답해주세요.`);
+                    return;
                 }
             }
 
@@ -157,4 +160,3 @@
     </script>
 </body>
 </html>
-
