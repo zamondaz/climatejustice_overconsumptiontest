@@ -62,6 +62,12 @@
         .hidden {
             display: none;
         }
+        .warning {
+            color: red;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -163,12 +169,13 @@
                 </ul>
             </div>
 
-            <div class="button-container">
+           <div class="button-container">
                 <button type="button" class="next-btn" onclick="showNextQuestion()">다음</button>
                 <button type="button" class="submit-btn hidden" onclick="submitQuiz()">제출하기</button>
             </div>
         </form>
         <div class="result hidden" id="result"></div>
+        <div class="warning hidden" id="warning">모든 질문에 응답해 주세요.</div>
     </div>
 
     <script>
@@ -177,9 +184,15 @@
         const nextBtn = document.querySelector('.next-btn');
         const submitBtn = document.querySelector('.submit-btn');
         const resultContainer = document.getElementById('result');
+        const warningContainer = document.getElementById('warning');
 
         function showNextQuestion() {
             if (currentQuestion < questionContainers.length - 1) {
+                if (!document.querySelector(`input[name="q${currentQuestion + 1}"]:checked`)) {
+                    warningContainer.classList.remove('hidden');
+                    return;
+                }
+                warningContainer.classList.add('hidden');
                 questionContainers[currentQuestion].classList.add('hidden');
                 currentQuestion++;
                 questionContainers[currentQuestion].classList.remove('hidden');
@@ -193,6 +206,12 @@
 
         function submitQuiz() {
             const answers = document.querySelectorAll('input[type="radio"]:checked');
+            if (answers.length < questionContainers.length) {
+                warningContainer.classList.remove('hidden');
+                return;
+            }
+            warningContainer.classList.add('hidden');
+
             let score = 0;
             answers.forEach(answer => {
                 score += parseInt(answer.value);
@@ -202,7 +221,7 @@
             let resultImg = '';
 
             if (score <= 4) {
-                resultText = '당신은 지구를 살리는 최소한의 소비를 하는 미니멀리스트 유형입니다. 이 유형에 속하는 사람들은 외부 요인에 흔들리지 않고 스스로 작은 것을 하나 구매하더라도 신중하게 고민하고 소비하는 결단력을 가지고 있습니다. 미니멀 라이프를 지향하는 사람들은 공간과 마음에 여유를 가지고 생활하며, 쉽게 소비를 하지 않음으로써 환경 보호에도 큰 도움이 됩니다. 당신은 최고의 환경지킴이입니다! ';
+                resultText = '당신은 지구를 살리는 최소한의 소비를 하는 미니멀리스트 유형입니다. 이 유형에 속하는 사람들은 외부 요인에 흔들리지 않고 스스로 작은 것을 하나 구매하더라도 신중하게 고민하고 소비하는 결단력을 가지고 있습니다. 미니멀 라이프를 지향하는 사람들은 공간과 마음에 여유를 가지고 생활하며, 쉽게 소비를 하지 않음으로써 환경 보호에도 큰 도움이 됩니다. 당신은 최고의 환경지킴이입니다!';
                 resultImg = 'green_minimalist.jpg';
             } else if (score <= 8) {
                 resultText = '당신은 환경을 보호하고자 필요한 것을 필요한만큼 소비하는 합리적 녹색 소비자 유형입니다. 이 유형에 속하는 사람들은 과잉 소비를 하지 않고 할인이나 행사 등 비합리적 소비를 유도하는 마케팅에 쉽게 현혹되지 않습니다. 이렇듯 합리적 소비를 하면 경제적으로 개인에게 도움이 될 뿐만이 아니라 환경 보호에도 좋은 영향을 끼칩니다. 이대로 생활을 계속 유지하되 녹색 소비, 지속가능한 소비에 조금 더 초점을 맞춰 소비한다면 더욱 지구에 도움이 될 것입니다!';
