@@ -11,13 +11,36 @@
             margin: 0;
             padding: 20px;
         }
-        .quiz-container {
+        .container {
             max-width: 700px;
             margin: auto;
             background-color: #fff;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .hidden {
+            display: none;
+        }
+        .start-btn, .next-btn, .submit-btn {
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .start-btn {
+            background-color: #007bff;
+        }
+        .start-btn:hover {
+            background-color: #0056b3;
+        }
+        .next-btn:hover, .submit-btn:hover {
+            background-color: #218838;
         }
         .question {
             margin-bottom: 20px;
@@ -29,23 +52,6 @@
         }
         .options li {
             margin-bottom: 10px;
-        }
-        .button-container {
-            display: flex;
-            justify-content: space-between;
-        }
-        .submit-btn, .next-btn {
-            padding: 10px 20px;
-            font-size: 1em;
-            border: none;
-            border-radius: 5px;
-            background-color: #28a745;
-            color: white;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        .submit-btn:hover, .next-btn:hover {
-            background-color: #218838;
         }
         .result {
             font-size: 1.2em;
@@ -59,19 +65,21 @@
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         }
-        .hidden {
-            display: none;
-        }
         .warning {
             color: red;
             font-weight: bold;
-            text-align: center;
             margin-top: 20px;
         }
     </style>
 </head>
 <body>
-    <div class="quiz-container">
+    <div class="container" id="start-page">
+        <h1>과잉 소비 성향 테스트</h1>
+        <p>이 테스트는 당신의 소비 성향을 평가하고, 과잉 소비를 줄이기 위한 팁을 제공하기 위해 설계되었습니다. 아래 버튼을 클릭하여 테스트를 시작하세요.</p>
+        <button class="start-btn" onclick="startTest()">테스트 시작하기</button>
+    </div>
+
+    <div class="container hidden" id="quiz-page">
         <form id="quiz-form">
             <div class="question-container">
                 <div class="question">1. 나는 신발을 1년에 3켤레 이상 구매한다.</div>
@@ -180,11 +188,18 @@
 
     <script>
         let currentQuestion = 0;
+        const startPage = document.getElementById('start-page');
+        const quizPage = document.getElementById('quiz-page');
         const questionContainers = document.querySelectorAll('.question-container');
         const nextBtn = document.querySelector('.next-btn');
         const submitBtn = document.querySelector('.submit-btn');
         const resultContainer = document.getElementById('result');
         const warningContainer = document.getElementById('warning');
+
+        function startTest() {
+            startPage.classList.add('hidden');
+            quizPage.classList.remove('hidden');
+        }
 
         function showNextQuestion() {
             if (currentQuestion < questionContainers.length - 1) {
@@ -236,7 +251,7 @@
 
             resultContainer.innerHTML = `<p>${resultText}</p><img src="images/${resultImg}" alt="${resultText}">`;
             resultContainer.classList.remove('hidden');
-            document.querySelector('form').classList.add('hidden');
+            quizPage.classList.add('hidden');
         }
     </script>
 </body>
