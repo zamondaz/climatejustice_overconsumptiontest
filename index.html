@@ -227,11 +227,14 @@
     }
     warningContainer.classList.add('hidden');
 
+    // 점수 계산
     let score = 0;
     answers.forEach(answer => {
-        score += parseInt(answer.value);
+        // 점수를 계산하기 전 값이 숫자인지 확인
+        score += parseInt(answer.value, 10);
     });
 
+    // 점수 확인
     let resultText = '';
     let resultImg = '';
 
@@ -249,7 +252,9 @@
         resultImg = 'shopping_king.jpg';
     }
 
-    resultContainer.innerHTML = `<p>${resultText}</p><img src="images/${resultImg}" alt="${resultText}">`;
+    resultContainer.innerHTML = `<p>당신의 점수는 <strong>${score}</strong>점입니다.</p>
+                                  <p>${resultText}</p>
+                                  <img src="images/${resultImg}" alt="${resultText}">`;
     resultContainer.classList.remove('hidden');
     document.querySelector('form').classList.add('hidden');
 }
