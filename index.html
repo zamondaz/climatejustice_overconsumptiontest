@@ -74,8 +74,8 @@
 </head>
 <body>
     <div class="container" id="start-page">
-        <h1>과잉 소비 성향 테스트</h1>
-        <p>이 테스트는 당신의 소비 성향을 평가하고, 과잉 소비를 줄이기 위한 팁을 제공하기 위해 설계되었습니다. 아래 버튼을 클릭하여 테스트를 시작하세요.</p>
+        <h1>과잉 소비 유형 테스트</h1>
+        <p>이 테스트는 기후정의페스티벌의 부스 행사로써 당신의 과잉 소비 유형을 평가하고, 과잉 소비를 줄이기 위한 팁을 제공하기 위해 제작되었습니다. 아래 버튼을 클릭하여 테스트를 시작하세요.</p>
         <button class="start-btn" onclick="startTest()">테스트 시작하기</button>
     </div>
 
@@ -177,29 +177,23 @@
                 </ul>
             </div>
 
-           <div class="button-container">
+
+            <div class="button-container">
                 <button type="button" class="next-btn" onclick="showNextQuestion()">다음</button>
                 <button type="button" class="submit-btn hidden" onclick="submitQuiz()">제출하기</button>
             </div>
         </form>
         <div class="result hidden" id="result"></div>
-        <div class="warning hidden" id="warning">모든 질문에 응답해 주세요.</div>
+        <div class="warning hidden" id="warning">질문에 응답한 후 다음 버튼을 눌러주세요.</div>
     </div>
 
     <script>
         let currentQuestion = 0;
-        const startPage = document.getElementById('start-page');
-        const quizPage = document.getElementById('quiz-page');
         const questionContainers = document.querySelectorAll('.question-container');
         const nextBtn = document.querySelector('.next-btn');
         const submitBtn = document.querySelector('.submit-btn');
         const resultContainer = document.getElementById('result');
         const warningContainer = document.getElementById('warning');
-
-        function startTest() {
-            startPage.classList.add('hidden');
-            quizPage.classList.remove('hidden');
-        }
 
         function showNextQuestion() {
             if (currentQuestion < questionContainers.length - 1) {
@@ -251,7 +245,7 @@
 
             resultContainer.innerHTML = `<p>${resultText}</p><img src="images/${resultImg}" alt="${resultText}">`;
             resultContainer.classList.remove('hidden');
-            quizPage.classList.add('hidden');
+            document.querySelector('form').classList.add('hidden');
         }
     </script>
 </body>
