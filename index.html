@@ -196,19 +196,25 @@
                 }
             }
 
-            let resultText = '';
+ let resultText = '';
+            let imageUrl = '';
+
             if (score >= 9) {
                 resultText = '녹색 미니멀리스트';
+                imageUrl = 'images/green_minimalist.jpg';
             } else if (score >= 6) {
                 resultText = '합리적 녹색 소비자';
+                imageUrl = 'images/rational_green_consumer.jpg';
             } else if (score >= 3) {
                 resultText = '맥시멀리스트';
+                imageUrl = 'images/maximalist.jpg';
             } else {
                 resultText = '쇼핑왕';
+                imageUrl = 'images/shopping_king.jpg';
             }
 
             const resultDiv = document.getElementById('result');
-            resultDiv.textContent = `점수: ${score}/12, 당신은 ${resultText}입니다.`;
+            resultDiv.innerHTML = `<span>점수: ${score}/12</span><br>당신은 ${resultText}입니다.<br><img src="${imageUrl}" alt="${resultText}">`;
         }
     </script>
 </body>
