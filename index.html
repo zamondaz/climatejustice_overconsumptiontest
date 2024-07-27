@@ -219,46 +219,69 @@
             }
         }
 
-    function submitQuiz() {
-    const answers = document.querySelectorAll('input[type="radio"]:checked');
-    if (answers.length < questionContainers.length) {
-        warningContainer.classList.remove('hidden');
-        return;
-    }
-    warningContainer.classList.add('hidden');
+            function submitQuiz() {
+                const answers = document.querySelectorAll('input[type="radio"]:checked');
+                if (answers.length < questionContainers.length) {
+                    warningContainer.classList.remove('hidden');
+                    return;
+                }
+                warningContainer.classList.add('hidden');
 
-    // 점수 계산
-    let score = 0;
-    answers.forEach(answer => {
-        // 점수를 계산하기 전 값이 숫자인지 확인
-        score += parseInt(answer.value, 10);
-    });
+                // 점수 계산
+                let score = 0;
+                answers.forEach(answer => {
+                    score += parseInt(answer.value, 10);
+                });
 
-    // 점수 확인
-    let resultText = '';
-    let resultImg = '';
+                // 점수 확인 및 결과 텍스트 설정
+                let resultText = '';
+                let resultImg = '';
 
-    if (10 <= score && score <= 12) {
-        resultText = '당신은 지구를 살리는 최소한의 소비를 하는 미니멀리스트 유형입니다. 이 유형에 속하는 사람들은 외부 요인에 흔들리지 않고 스스로 작은 것을 하나 구매하더라도 신중하게 고민하고 소비하는 결단력을 가지고 있습니다. 미니멀 라이프를 지향하는 사람들은 공간과 마음에 여유를 가지고 생활하며, 쉽게 소비를 하지 않음으로써 환경 보호에도 큰 도움이 됩니다. 당신은 최고의 환경지킴이입니다!';
-        resultImg = 'green_minimalist.jpg';
-    } else if (6 <= score && score <= 9) {
-        resultText = '당신은 환경을 보호하고자 필요한 것을 필요한만큼 소비하는 합리적 녹색 소비자 유형입니다. 이 유형에 속하는 사람들은 과잉 소비를 하지 않고 할인이나 행사 등 비합리적 소비를 유도하는 마케팅에 쉽게 현혹되지 않습니다. 이렇듯 합리적 소비를 하면 경제적으로 개인에게 도움이 될 뿐만이 아니라 환경 보호에도 좋은 영향을 끼칩니다. 이대로 생활을 계속 유지하되 녹색 소비, 지속가능한 소비에 조금 더 초점을 맞춰 소비한다면 더욱 지구에 도움이 될 것입니다!';
-        resultImg = 'rational_green_consumer.jpg';
-    } else if (2 <= score && score <= 5) {
-        resultText = '당신은 환경을 아끼고자하는 마음을 지닌 맥시멀리스트군요! 여러 아이템을 다양하게 구매해 멋진 스타일을 만들어내고 있는 것 같아요. 환경운동에 동참하는 소비자란,, 정말 멋진 사람!!! 하지만 아무리 환경보호 소비를 한다고 해도 과소비가 이어지다 보면 낭비가 생길 수도 있다는 점 꼭 기억해주세요. 당신의 과소비 없는 환경 사랑 항상 응원합니다!';
-        resultImg = 'maximalist.jpg';
-    } else {
-        resultText = '당신은 패션 및 여러 분야에서 쇼핑하는 것을 좋아하시는군요! 여러 아이템을 활용해서 멋진 스타일링을 하고, 다채로운 삶을 살고 있으신 것 같아요. 환경을 위한 쇼핑도 하신다니 정말 대단한 것 같아요. 하지만 많은 상품들을 구매하다보면 지속적인 낭비가 발생할 수도 있으니 주의가 필요해요. 낭비 없는 소비를 하려고 노력하는 마음만 가진다면 당신은 앞으로 최고의 환경사랑인이 될 수 있답니다!';
-        resultImg = 'shopping_king.jpg';
-    }
+                if (0 <= score && score <= 2) {
+                    resultText = '당신은 지구를 살리는 최소한의 소비를 하는 미니멀리스트 유형입니다. 이 유형에 속하는 사람들은 외부 요인에 흔들리지 않고 스스로 작은 것을 하나 구매하더라도 신중하게 고민하고 소비하는 결단력을 가지고 있습니다. 미니멀 라이프를 지향하는 사람들은 공간과 마음에 여유를 가지고 생활하며, 쉽게 소비를 하지 않음으로써 환경 보호에도 큰 도움이 됩니다. 당신은 최고의 환경지킴이입니다!';
+                    resultImg = 'green_minimalist.jpg';
+                } else if (3 <= score && score <= 5) {
+                    resultText = '당신은 환경을 보호하고자 필요한 것을 필요한만큼 소비하는 합리적 녹색 소비자 유형입니다. 이 유형에 속하는 사람들은 과잉 소비를 하지 않고 할인이나 행사 등 비합리적 소비를 유도하는 마케팅에 쉽게 현혹되지 않습니다. 이렇듯 합리적 소비를 하면 경제적으로 개인에게 도움이 될 뿐만이 아니라 환경 보호에도 좋은 영향을 끼칩니다. 이대로 생활을 계속 유지하되 녹색 소비, 지속가능한 소비에 조금 더 초점을 맞춰 소비한다면 더욱 지구에 도움이 될 것입니다!';
+                    resultImg = 'rational_green_consumer.jpg';
+                } else if (6 <= score && score <= 9) {
+                    resultText = '당신은 환경을 아끼고자하는 마음을 지닌 맥시멀리스트군요! 여러 아이템을 다양하게 구매해 멋진 스타일을 만들어내고 있는 것 같아요. 환경운동에 동참하는 소비자란,, 정말 멋진 사람!!! 하지만 아무리 환경보호 소비를 한다고 해도 과소비가 이어지다 보면 낭비가 생길 수도 있다는 점 꼭 기억해주세요. 당신의 과소비 없는 환경 사랑 항상 응원합니다!';
+                    resultImg = 'maximalist.jpg';
+                } else {
+                    resultText = '당신은 패션 및 여러 분야에서 쇼핑하는 것을 좋아하시는군요! 여러 아이템을 활용해서 멋진 스타일링을 하고, 다채로운 삶을 살고 있으신 것 같아요. 환경을 위한 쇼핑도 하신다니 정말 대단한 것 같아요. 하지만 많은 상품들을 구매하다보면 지속적인 낭비가 발생할 수도 있으니 주의가 필요해요. 낭비 없는 소비를 하려고 노력하는 마음만 가진다면 당신은 앞으로 최고의 환경사랑인이 될 수 있답니다!';
+                    resultImg = 'shopping_king.jpg';
+                }
 
-    resultContainer.innerHTML = `<p>당신의 점수는 <strong>${score}</strong>점입니다.</p>
-                                  <p>${resultText}</p>
-                                  <img src="images/${resultImg}" alt="${resultText}">`;
-    resultContainer.classList.remove('hidden');
-    document.querySelector('form').classList.add('hidden');
-}
+                // 결과 표시
+                resultContainer.innerHTML = `<p>당신의 점수는 <strong>${score}</strong>점입니다.</p>
+                                              <p>${resultText}</p>
+                                              <img src="images/${resultImg}" alt="${resultText}">
+                                              <button onclick="showExplanations()">문항별 해설 확인하기</button>
+                                              <div id="explanations" class="hidden"></div>`;
+                resultContainer.classList.remove('hidden');
+                document.querySelector('form').classList.add('hidden');
+            }
 
-    </script>
+            function showExplanations() {
+                const explanations = [
+                    "1. 나는 신발을 1년에 3켤레 이상 산다. -> 신발의 평균 수명은 6개월에서 2년 정도라고 합니다. 필요에 따라 구매하되, 유행에 민감하게 반응하지 않고 오래 착용할 수 있는 신발을 선택하는 것이 좋습니다!",
+                    "2. 나는 유행한다는 이유로 불필요한 옷을 산 적이 있다. -> 단순히 유행을 따르기 위해 실제 필요하지 않은 옷을 구매하는 유형이고 필요한 옷을 구매하는 것이 중요합니다.",
+                    "3. 나는 옷장에 비슷한 옷을 가지고 있는지 모르고 새로운 옷을 구매한 적 있다. -> 자신의 소유물을 제대로 확인하지 못하고 중복구매를 하는 경우이고 옷장 정리를 통해 중복되는 옷이 있는지 확인하고 필요한 옷만 구매하도록 합시다!",
+                    "4. 향을 교체하고자 하는 이유로 샴푸를 자주 바꾼다. -> 실제 필요한 것 이상으로 제품을 구매하는 경우에 해당하며 향이 마음에 들지 않더라도 불필요한 교체는 자제하는 것이 좋습니다. 피부나 모발에 맞는 제품을 찾아 지속적으로 사용하는 것이 더 효과적입니다!",
+                    "5. 나는 실사용 목적이 아닌 화장품을 구매한 적이 있다. (ex. 케이스가 이뻐서, 광고 모델이 좋아서) -> 과잉소비의 전형적인 사례로, 필요성 보단 외형적인 요인에 의해 제품을 구매하는 경우입니다.",
+                    "6. 나는 환경을 아낀다는 생각으로 텀블러를 3개 이상 샀다. -> 환경을 고려한다는 명분 아래 이루어진 과잉소비의 한 예로 환경을 생각하여 구매하는 것은 좋지만, 그것이 과도한 구매로 이어지는 건 바람직하지 않습니다.",
+                    "7. 나는 환경운동에 동참하고 싶어서 일부러 특정 브랜드의 상품을 많이 구매해주었다. 환경 -> 친환경적인 이미지로 포장하는 기업들의 그린워싱 전략일 수 있습니다. 근거없이 브랜드의 이미지를 맹신하여 과잉소비로 이어지는 행태를 막아야 합니다.",
+                    "8. 나는 환경을 아낀다는 생각으로 에코백이 있는데 구매한 적이 있다. 환경 -> 환경을 고려한다는 명목하에 과잉소비를 한 것은 아닌지 고려해보아야 합니다.",
+                    "9. 생분해 비닐과 같은 제품을 구매해서 사용한 적 있다. 환경 -> 생분해 플라스틱은 조건이 까다로워 분해되지 않아 일반 플라스틱과 동일하게 처리됩니다. 단순히 친환경적인 행동이였는지 점검해보아야 합니다.",
+                    "10. 나는 휴대폰 및 전자기기를 2년에 한 번 이상 바꾼다. -> 휴대폰 및 전자기기의 경우, 비슷한 기능임에도 매번 신제품을 출시하여 지속적인 신제품 구입유행에 동참하게 하는 불필요한 과잉소비의 패턴으로 이어집니다.",
+                    "11. 나는 주 1회 이상 못 먹은 식재료를 폐기한다. -> 묶음으로 구매하여 불필요하게 낭비되는 식재료 폐기가 지속적임에도 여전히 같은 패턴으로 과잉소비를 하는 것은 아닌지 점검해보아야 합니다.",
+                    "12. 나는 할인 또는 1+1행사 등의 이유로 물품을 필요 이상으로 산 적이 있다. -> 전형적인 과잉소비의 형태로, 대량으로 구매할 이유가 없음에도 필요 이상으로 사는 것이 합리적이라고 생각하는 유형입니다. 가격도 중요하지만 이러한 과잉소비가 반복적으로 일어나는 것은 아닌지 점검해보아야 합니다."
+                ];
+
+                const explanationDiv = document.getElementById('explanations');
+                explanationDiv.innerHTML = explanations.map(e => `<p>${e}</p>`).join('');
+                explanationDiv.classList.remove('hidden');
+            }
+        </script>
+    </div>
 </body>
 </html>
